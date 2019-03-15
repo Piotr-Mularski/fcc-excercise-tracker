@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-const userModel = require('./../models/User');
+const userModel = require('../models/UserModel');
 
-exports.createUser = async (req, res) => {
-	console.log(req.body);
+exports.createUser = (req, res) => {
 	const user = new userModel(req.body);
 	user.save((err, data) => {
 		if (err) {
