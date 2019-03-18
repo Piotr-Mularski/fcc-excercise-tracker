@@ -7,13 +7,9 @@ router.get('/', (req, res) => {
 	res.sendFile(process.cwd() + '/views/index.html');
 });
 
-router.get('/api/excercise/log', (req, res) => {
-	res.send(req.query);
-});
-
 router.post('/api/excercise/new-user', userController.createUser);
-module.exports = router;
+
+router.get('/api/excercise/log', excerciseController.getExcercises);
 
 router.post('/api/excercise/add', excerciseController.addExcercise);
 module.exports = router;
-

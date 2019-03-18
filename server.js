@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', router);
 
 // connect to the database
-mongoose.connect(process.env.MLAB_URI, (err) => {
+mongoose.connect(process.env.MLAB_URI, { useNewUrlParser: true }, (err) => {
 	if(err) {
 		console.error('cannot connect to the database', err);
 	} else {
