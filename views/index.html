@@ -14,18 +14,18 @@
 	</head>
 <body>
 	<main>
-		<h1>Excercise tracker</h1>
-		<form class="username__form" action="/api/excercise/new-user" method="POST">
+		<h1>Exercise tracker</h1>
+		<form class="username__form" action="/api/exercise/new-user" method="POST">
 			<input class="username__input" name="username" placeholder="Your Username" type="text" required>
 			<button class="username__button" type="submit">Create user</button>
 		</form>
 
-		<form class="excercise__form" action="/api/excercise/add" method="POST">
-			<input class="excercise__input" name="userID" placeholder="userID*" type="text" required>
-			<input class="excercise__input" name="description" placeholder="description*" type="text" required>
-			<input class="excercise__input" name="duration" placeholder="duration* (mins)" type="text" required>
-			<input class="excercise__input" name="date" placeholder="date* (yyyy-mm-dd)" type="text">
-			<button class="username__button" type="submit">Create Excercise</button>
+		<form class="exercise__form" action="/api/exercise/add" method="POST">
+			<input class="exercise__input" name="userID" placeholder="userID*" type="text" required>
+			<input class="exercise__input" name="description" placeholder="description*" type="text" required>
+			<input class="exercise__input" name="duration" placeholder="duration* (mins)" type="text" required>
+			<input class="exercise__input" name="date" placeholder="date* (yyyy-mm-dd)" type="text">
+			<button class="username__button" type="submit">Create Exercise</button>
 		</form>
 	</main>
 </body>

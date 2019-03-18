@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const excerciseSchema = new mongoose.Schema({
+const exerciseSchema = new mongoose.Schema({
 	userID: {
 		type: String,
 		required: true
@@ -16,4 +16,4 @@ const excerciseSchema = new mongoose.Schema({
 	date: Date
 });
 
-module.exports = mongoose.model('excercise', excerciseSchema);
+module.exports = mongoose.model('exercise', exerciseSchema);
