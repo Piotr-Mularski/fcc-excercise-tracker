@@ -37,6 +37,7 @@ exports.getExercises = async (req, res) => {
 		});
 		res.json({
 			user: user.username,
+			count: exercises.length,
 			exercises: formatedExercises
 		});
 	} catch(err) {
