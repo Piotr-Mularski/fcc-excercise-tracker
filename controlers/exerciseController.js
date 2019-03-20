@@ -26,18 +26,33 @@ exports.addExercise = async (req, res) => {
 
 exports.getExercises = async (req, res) => {
 	try {
-		const user = await UserModel.findById(req.query.userid);
-		const exercises = await ExerciseModel.find({ userID: req.query.userid })
+		const { userid, from, to } = req.query;
+		const limit = req.query.limit ? parseInt(req.query.limit, 10) : undefined;
+		const user = await UserModel.findById(userid);
+		let exercises = await ExerciseModel.find({ userID: req.query.userid }).sort({ date: -1 });
+
+		exercises = exercises.filter((exercise) => {
+			if(!!from && !moment(exercise.date).isSameOrAfter(from)) {
+				return false;
+			}
+			if(!!to && !moment(exercise.date).isSameOrBefore(to)) {
+				return false;
+			}
+
+			return true;
+		});
+
 		const formatedExercises = exercises.map((exercise) => {
 			return {
 				description: exercise.description,
 				duration: exercise.duration,
 				date: moment(exercise.date).format('Do MMMM YYYY')
 			};
-		});
+		}).slice(0, limit);
+
 		res.json({
 			user: user.username,
-			count: exercises.length,
+			count: formatedExercises.length,
 			exercises: formatedExercises
 		});
 	} catch(err) {
